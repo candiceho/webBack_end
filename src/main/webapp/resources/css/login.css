@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+body{
+	background:url("/project/resources/css/images/index3.jpg");
+	font-family:arial;
+}
+
+.main{
+	background: #dfffdf;
+	border-radius: 8px;
+	width:300px;
+	height:300px;
+	padding: 40px 20px 10px 40px;
+	opacity:.8;
+	position: fixed;
+	top: 150px;
+	left: 500px;
+}
+
+strong{
+	color:red
+}

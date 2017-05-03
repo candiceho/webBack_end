@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context 
+	    http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	
+	<http use-expressions="true">
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+		<intercept-url pattern="/**" access="permitAll" />
+		<csrf disabled="true" />
+		
+		<!-- <form-login /> -->		
+		<form-login
+		login-page="/"
+		default-target-url="/"
+		authentication-failure-url="/loginError"
+		authentication-success-handler-ref="roleHandler"  />
+		
+		<!-- <logout /> -->
+		<logout logout-success-url="/"/>
+	</http>
+	
+	<beans:bean id="userRoleServiceImpl" class="neu.edu.project.service.UserRoleServiceImpl"/>
+	<beans:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<beans:bean id="roleHandler" class="neu.edu.project.validator.UserRoleValidator"/>
+    <context:component-scan base-package="neu.edu.project" />
+		
+	<authentication-manager>
+    	<!-- in-memory authentication provider, only useful for prototype applications that don't require complex security infrastructure -->
+         <authentication-provider> 
+             <user-service>  
+                 <user name="user" password="password" authorities="" />  
+             </user-service>       
+         </authentication-provider> 
+  
+         <authentication-provider  user-service-ref="userRoleServiceImpl" >
+             <password-encoder ref="encoder" />
+         </authentication-provider>
+    </authentication-manager>	
+</beans:beans>

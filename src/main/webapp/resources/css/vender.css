@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+#pic{
+	position:relative;
+	top:40px;
+	left: 60px;
+}
+
+.name1{
+	margin-top:40px;
+	margin-left:20px;
+	margin-bottom:8px;
+	font-size:20px;
+	font-weight:bold;
+	
+}
+
+#wel{color:#bb3d00}
+#name2{color:#8cea00; font-size:24px;}
+#products{font-size:20px; color:#ff5809; margin-top:30px; margin-bottom:20px;}
+#products a{margin-left:50px;}
+#pro span{ font-size:18px color:#ff9d6f;}
+.orderSta{ text-align:center; font-weight: bold; color:#0072e3;}
+.proo{font-weight:bold; color:#ff9d6f;}
